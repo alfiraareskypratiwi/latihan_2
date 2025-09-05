@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Tamu</title>
+</head>
+<body>
+    <h2>Buku Tamu Website</h2>
+    <p>Silakan isi form di bawah ini untuk memberikan komentar atau saran</p>
+    
+    <form action="proses_buku_tamu.php" method="POST">
+        <label for="nama">Nama Lengkap:</label><br>
+        <input type="text" id="nama" name="nama" size="30" maxlength="50" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" size="30" maxlength="50" required><br><br>
+        
+        <label for="website">Website (opsional):</label><br>
+        <input type="text" id="website" name="website" size="30" maxlength="100"><br><br>
+        <label>Jenis Kelamin:</label><br>
+        <input type="radio" id="pria" name="jenis_kelamin" value="pria">
+        <label for="pria">Pria</label><br>
+        <input type="radio" id="wanita" name="jenis_kelamin" value="wanita">
+        <label for="wanita">Wanita</label><br><br>
+        <label>Minat (pilih yang sesuai):</label><br>
+        <input type="checkbox" id="teknologi" name="minat[]" value="teknologi">
+        <label for="teknologi">Teknologi</label><br>
+        <input type="checkbox" id="olahraga" name="minat[]" value="olahraga">
+        <label for="olahraga">Olahraga</label><br>
+        <input type="checkbox" id="musik" name="minat[]" value="musik">
+        <label for="musik">Musik</label><br>
+        <input type="checkbox" id="traveling" name="minat[]" value="traveling">
+        <label for="traveling">Traveling</label><br><br>
+         <label for="info">Bagaimana Anda mengetahui website ini?</label><br>
+        <select name="info" id="info">
+            <option value="">-- Pilih Sumber --</option>
+            <option value="search_engine">Search Engine (Google, Yahoo, dll)</option>
+            <option value="social_media">Media Sosial</option>
+            <option value="teman">Dari Teman</option>
+            <option value="iklan">Iklan</option>
+            <option value="lainnya">Lainnya</option>
+        </select><br><br>
+         <label for="komentar">Komentar/Saran:</label><br>
+        <textarea id="komentar" name="komentar" rows="5" cols="50" placeholder="Tulis komentar atau saran Anda di sini..."></textarea><br><br>
+        
+        <label for="password">Password (untuk verifikasi):</label><br>
+        <input type="password" id="password" name="password" maxlength="20"><br><br>
+
+         <label for="foto">Upload Foto (opsional):</label><br>
+        <input type="file" id="foto" name="foto" accept="image/*"><br><br>
+
+        input type="submit" value="Kirim Buku Tamu">
+        <input type="reset" value="Batal/Reset">
+    </form>
+    
+    <br>
+    <p><a href="index.html">← Kembali ke Halaman Utama</a></p>
+</body>
+</html>
