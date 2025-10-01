@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Alfira Resky Pratiwi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%) !important;
+            box-shadow: 0 4px 12px rgba(131, 24, 67, 0.2);
+            padding: 15px 0;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            padding: 80px 0 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .profile-section {
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(131, 24, 67, 0.15);
+            padding: 40px;
+            border: 3px solid #fbcfe8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(131, 24, 67, 0.25);
+        }
+        
+        .profile-img-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 8px 25px rgba(131, 24, 67, 0.3);
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #831843, #be185d);
+            animation: pulse 2s infinite;
+            z-index: 1;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+        }
+        
+        .badge-custom {
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(131, 24, 67, 0.3);
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #831843;
+            transition: all 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(131, 24, 67, 0.15);
+        }
+        
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(131, 24, 67, 0.3);
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(131, 24, 67, 0.15);
+            margin-bottom: 30px;
+            border: 3px solid #fbcfe8;
+        }
+        
+        .section-title {
+            color: #831843;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            border-radius: 2px;
+        }
+        
+        .skills-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 4px solid #0ea5e9;
+            transition: all 0.3s ease;
+        }
+        
+        .skills-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2);
+        }
+        
+        .interest-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 4px solid #22c55e;
+            transition: all 0.3s ease;
+        }
+        
+        .interest-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
+        }
+        
+        .table-wrapper {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(131, 24, 67, 0.1);
+        }
+        
+        .table-custom {
+            margin-bottom: 0;
+        }
+        
+        .table-custom thead {
+            background: linear-gradient(135deg, #fbcfe8 0%, #f9a8d4 100%);
+        }
+        
+        .table-custom thead th {
+            color: #831843;
+            font-weight: 600;
+            padding: 18px;
+            border: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .table-custom tbody td {
+            padding: 18px;
+            vertical-align: middle;
+            border-color: #fce7f3;
+        }
+        
+        .table-custom tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .table-custom tbody tr:hover {
+            background-color: #fdf2f8;
+            transform: scale(1.01);
+        }
+        
+        .badge-name {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(6, 182, 212, 0.3);
+        }
+        
+        .gender-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .gender-badge.female {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            color: #831843;
+        }
+        
+        .gender-badge.male {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            color: #1e40af;
+        }
+        
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #0369a1;
+            font-weight: 500;
+        }
+        
+        .info-alert {
+            background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);
+            border: none;
+            border-left: 4px solid #06b6d4;
+            border-radius: 15px;
+            color: #0e7490;
+            padding: 20px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.2);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(131, 24, 67, 0.3);
+        }
+        
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #be185d 0%, #831843 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(131, 24, 67, 0.4);
+            color: white;
+        }
+        
+        .btn-outline-gradient {
+            border: 2px solid #831843;
+            color: #831843;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-gradient:hover {
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(131, 24, 67, 0.4);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            color: white;
+            padding: 30px 0;
+            margin-top: 60px;
+            box-shadow: 0 -5px 20px rgba(131, 24, 67, 0.2);
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-links a:hover {
+            background: white;
+            color: #831843;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+        
+        .highlight {
+            color: #831843;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="#">
+                <i class="bi bi-person-circle me-2"></i>Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active px-3" href="#home">
+                            <i class="bi bi-house-fill me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#about">
+                            <i class="bi bi-person-fill me-1"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#friends">
+                            <i class="bi bi-people-fill me-1"></i>Teman
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#contact">
+                            <i class="bi bi-envelope-fill me-1"></i>Kontak
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section" id="home">
+        <div class="container text-center text-white position-relative">
+            <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">
+                About Me
+            </h1>
+            <p class="lead fs-4 mb-0">Profil Mahasiswa Teknik Informatika dan Komputer</p>
+        </div>
+    </div>
+
+    <div class="container profile-section">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="profile-card text-center">
+                    <div class="profile-img-container">
+                        <img src="Fira.jpg" alt="Alfira Resky Pratiwi" class="profile-img">
+                    </div>
+                    
+                    <h3 class="fw-bold text-dark mb-2">Alfira Resky Pratiwi</h3>
+                    <span class="badge badge-custom mb-3">
+                        <i class="bi bi-mortarboard-fill me-2"></i>Mahasiswa JTIK
+                    </span>
+                    <p class="text-muted mb-4">Jurusan Teknik Informatika Dan Komputer</p>
+                    
+                    <div class="info-box">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-circle me-3">
+                                <i class="bi bi-book-fill"></i>
+                            </div>
+                            <div class="text-start">
+                                <small class="text-muted d-block">Mata Kuliah</small>
+                                <strong class="text-dark">Pemrograman Web</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-circle me-3">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div class="text-start">
+                                <small class="text-muted d-block">Lokasi</small>
+                                <strong class="text-dark">Maros, Sulawesi Selatan</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-3 mt-4">
+                        <button class="btn btn-gradient">
+                            <i class="bi bi-envelope-fill me-2"></i>Hubungi Saya
+                        </button>
+                        <button class="btn btn-outline-gradient">
+                            <i class="bi bi-download me-2"></i>Download CV
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="content-card" id="about">
+                    <h2 class="section-title">
+                        <i class="bi bi-info-circle-fill me-2"></i>Tentang Saya
+                    </h2>
+                    
+                    <p class="intro-text">
+                        Halo, saya <span class="highlight">Alfira Resky Pratiwi</span>, Mahasiswa Jurusan Teknik Informatika Dan Komputer (JTIK).
+                    </p>
+                    
+                    <p class="intro-text">
+                        Saat ini saya sedang menempuh mata kuliah Pemrograman Web dan tertarik dalam pengembangan aplikasi web modern. Saya memiliki semangat belajar yang tinggi dan selalu berusaha mengembangkan kemampuan saya di bidang teknologi informasi.
+                    </p>
+                    
+                    <div class="row g-3 mt-4">
+                        <div class="col-md-6">
+                            <div class="skills-card h-100">
+                                <h6 class="text-primary mb-3">
+                                    <i class="bi bi-code-square me-2"></i>Skills
+                                </h6>
+                                <p class="mb-0 fw-500">HTML, CSS, JavaScript, Bootstrap</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="interest-card h-100">
+                                <h6 class="text-success mb-3">
+                                    <i class="bi bi-trophy-fill me-2"></i>Minat
+                                </h6>
+                                <p class="mb-0 fw-500">Web Development, UI/UX Design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card" id="friends">
+                    <h2 class="section-title">
+                        <i class="bi bi-people-fill me-2"></i>Daftar Teman di Mata Kuliah Pemrograman Web
+                    </h2>
+                    
+                    <div class="table-wrapper">
+                        <div class="table-responsive">
+                            <table class="table table-custom">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; width: 60px;">No</th>
+                                        <th colspan="2" class="text-center">Nama</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; width: 150px;">Jenis Kelamin</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; width: 150px;">Alamat</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle;">Asal Sekolah</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">Lengkap</th>
+                                        <th class="text-center">Panggilan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="fw-bold fs-5 text-primary">1</span>
+                                        </td>
+                                        <td class="fw-500">Sitti Aminah Suhriani</td>
+                                        <td class="text-center">
+                                            <span class="badge-name">Mina</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="gender-badge female">
+                                                <i class="bi bi-gender-female"></i>Perempuan
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="location-badge">
+                                                <i class="bi bi-geo-alt-fill"></i>Antang
+                                            </span>
+                                        </td>
+                                        <td>SMK Negeri 10 Makassar</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="fw-bold fs-5 text-primary">2</span>
+                                        </td>
+                                        <td class="fw-500">Nabila</td>
+                                        <td class="text-center">
+                                            <span class="badge-name">Nabil</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="gender-badge female">
+                                                <i class="bi bi-gender-female"></i>Perempuan
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="location-badge">
+                                                <i class="bi bi-geo-alt-fill"></i>Pettarani 4
+                                            </span>
+                                        </td>
+                                        <td>SMK Negeri 10 Makassar</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="fw-bold fs-5 text-primary">3</span>
+                                        </td>
+                                        <td class="fw-500">Rifaldi</td>
+                                        <td class="text-center">
+                                            <span class="badge-name">Ipal</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="gender-badge male">
+                                                <i class="bi bi-gender-male"></i>Laki-laki
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="location-badge">
+                                                <i class="bi bi-geo-alt-fill"></i>Gowa
+                                            </span>
+                                        </td>
+                                        <td>SMA Negeri 2 Pallangga</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="info-alert mt-4">
+                        <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                        <strong>Info:</strong> Total teman sekelas di mata kuliah Pemrograman Web: <strong>3 orang</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center" id="contact">
+        <div class="container">
+            <h5 class="fw-bold mb-3">
+                <i class="bi bi-heart-fill text-danger me-2"></i>Mari Terhubung
+            </h5>
+            <p class="mb-3">Ikuti media sosial saya untuk update terbaru</p>
+            
+            <div class="social-links mb-4">
+                <a href="#" title="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" title="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" title="GitHub">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a href="#" title="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="#" title="Email">
+                    <i class="bi bi-envelope-fill"></i>
+                </a>
+            </div>
+            
+            <hr class="border-white opacity-25 my-3">
+            
+            <p class="small mb-2">
+                Dibuat dengan <i class="bi bi-heart-fill text-danger"></i> menggunakan Bootstrap 5
+            </p>
+            <p class="small mb-0">
+                &copy; 2025 Alfira Resky Pratiwi - Tugas Pemrograman Web
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
