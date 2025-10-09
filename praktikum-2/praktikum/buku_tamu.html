@@ -3,58 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buku Tamu</title>
+    <title>Buku Tamu - Tema Pink Pastel</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Skema Warna Pink Pastel */
+        :root {
+            --primary: #b04e6c;     /* Pink Tua (untuk tombol, judul) */
+            --secondary: #fde2e6;   /* Pink Muda / Aksen (untuk latar belakang) */
+            --bg-body: #fff0f3;     /* Latar belakang halaman */
+            --text-color: #333;
+        }
+
+        /* Override CSS Dasar */
+        body {
+            background-color: var(--bg-body) !important;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Styling Card Kontainer */
+        .card {
+            border: 1px solid var(--secondary);
+            background-color: white;
+        }
+
+        /* Styling Judul dan Teks */
+        .card h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+            margin-bottom: 20px !important;
+        }
+
+        /* Styling Input Form (menjaga warna border fokus) */
+        .form-control:focus, .form-select:focus, .form-check-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(176, 78, 108, 0.25); /* Shadow pink transparan */
+        }
+        
+        /* Styling Tombol (Override warna Bootstrap default) */
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #92405c; /* Sedikit lebih gelap saat hover */
+            border-color: #92405c;
+        }
+
+        /* Styling Tombol Sekunder */
+        .btn-secondary {
+            background-color: #6c757d; /* Tetap abu-abu atau ganti ke warna tema lain jika perlu */
+            border-color: #6c757d;
+        }
+        
+        /* Styling Tombol Link Kembali */
+        .btn-link {
+            color: var(--primary);
+            text-decoration-color: var(--primary);
+        }
+    </style>
 </head>
 <body>
-    <h2>Buku Tamu Website</h2>
-    <p>Silakan isi form di bawah ini untuk memberikan komentar atau saran</p>
-    
-    <form action="proses_buku_tamu.php" method="POST">
-        <label for="nama">Nama Lengkap:</label><br>
-        <input type="text" id="nama" name="nama" size="30" maxlength="50" required><br><br>
-        
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" size="30" maxlength="50" required><br><br>
-        
-        <label for="website">Website (opsional):</label><br>
-        <input type="text" id="website" name="website" size="30" maxlength="100"><br><br>
-        <label>Jenis Kelamin:</label><br>
-        <input type="radio" id="pria" name="jenis_kelamin" value="pria">
-        <label for="pria">Pria</label><br>
-        <input type="radio" id="wanita" name="jenis_kelamin" value="wanita">
-        <label for="wanita">Wanita</label><br><br>
-        <label>Minat (pilih yang sesuai):</label><br>
-        <input type="checkbox" id="teknologi" name="minat[]" value="teknologi">
-        <label for="teknologi">Teknologi</label><br>
-        <input type="checkbox" id="olahraga" name="minat[]" value="olahraga">
-        <label for="olahraga">Olahraga</label><br>
-        <input type="checkbox" id="musik" name="minat[]" value="musik">
-        <label for="musik">Musik</label><br>
-        <input type="checkbox" id="traveling" name="minat[]" value="traveling">
-        <label for="traveling">Traveling</label><br><br>
-         <label for="info">Bagaimana Anda mengetahui website ini?</label><br>
-        <select name="info" id="info">
-            <option value="">-- Pilih Sumber --</option>
-            <option value="search_engine">Search Engine (Google, Yahoo, dll)</option>
-            <option value="social_media">Media Sosial</option>
-            <option value="teman">Dari Teman</option>
-            <option value="iklan">Iklan</option>
-            <option value="lainnya">Lainnya</option>
-        </select><br><br>
-         <label for="komentar">Komentar/Saran:</label><br>
-        <textarea id="komentar" name="komentar" rows="5" cols="50" placeholder="Tulis komentar atau saran Anda di sini..."></textarea><br><br>
-        
-        <label for="password">Password (untuk verifikasi):</label><br>
-        <input type="password" id="password" name="password" maxlength="20"><br><br>
+    <div class="container mt-5 mb-5">
+        <div class="card shadow-lg p-4 mx-auto" style="max-width: 600px;"> 
+            <h2 class="mb-3 text-center">📖 Buku Tamu Website</h2>
+            <p class="text-muted text-center">Silakan isi form di bawah ini untuk memberikan komentar atau saran</p>
+            
+            <form action="proses_buku_tamu.php" method="POST" enctype="multipart/form-data">
+                
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" class="form-control" maxlength="50" required>
+                </div>
 
-         <label for="foto">Upload Foto (opsional):</label><br>
-        <input type="file" id="foto" name="foto" accept="image/*"><br><br>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" maxlength="50" required>
+                </div>
 
-        <input type="submit" value="Kirim Buku Tamu">
-        <input type="reset" value="Batal/Reset">
-    </form>
-    
-    <br>
-    <p><a href="index.html">← Kembali ke Halaman Utama</a></p>
+                <div class="mb-3">
+                    <label for="website" class="form-label">Website (opsional)</label>
+                    <input type="text" id="website" name="website" class="form-control" maxlength="100">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Jenis Kelamin</label><br>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="pria" name="jenis_kelamin" value="pria" class="form-check-input">
+                        <label for="pria" class="form-check-label">Pria</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="wanita" name="jenis_kelamin" value="wanita" class="form-check-input">
+                        <label for="wanita" class="form-check-label">Wanita</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Minat</label><br>
+                    <div class="form-check">
+                        <input type="checkbox" id="teknologi" name="minat[]" value="teknologi" class="form-check-input">
+                        <label for="teknologi" class="form-check-label">Teknologi</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="olahraga" name="minat[]" value="olahraga" class="form-check-input">
+                        <label for="olahraga" class="form-check-label">Olahraga</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="musik" name="minat[]" value="musik" class="form-check-input">
+                        <label for="musik" class="form-check-label">Musik</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="traveling" name="minat[]" value="traveling" class="form-check-input">
+                        <label for="traveling" class="form-check-label">Traveling</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="info" class="form-label">Bagaimana Anda mengetahui website ini?</label>
+                    <select name="info" id="info" class="form-select">
+                        <option value="">-- Pilih Sumber --</option>
+                        <option value="search_engine">Search Engine (Google, Yahoo, dll)</option>
+                        <option value="social_media">Media Sosial</option>
+                        <option value="teman">Dari Teman</option>
+                        <option value="iklan">Iklan</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="komentar" class="form-label">Komentar/Saran</label>
+                    <textarea id="komentar" name="komentar" class="form-control" rows="5" placeholder="Tulis komentar atau saran Anda di sini..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password (untuk verifikasi)</label>
+                    <input type="password" id="password" name="password" maxlength="20" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Upload Foto (opsional)</label>
+                    <input type="file" id="foto" name="foto" accept="image/*" class="form-control">
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Kirim Buku Tamu</button>
+                    <button type="reset" class="btn btn-secondary">Batal/Reset</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <a href="index.html" class="btn btn-link">← Kembali ke Halaman Utama</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
